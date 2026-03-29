@@ -1,0 +1,18 @@
+Read:
+- .github/copilot-instructions.md
+- .github/skills/fix-github-issue.md
+
+Fix GitHub issue #{ISSUE_NUMBER}
+
+STRICT PROCESS:
+1. Test first
+2. Find real issue
+3. Do RCA
+4. Suggest fix
+5. Verify fix
+
+OUTPUT:
+- Test Results
+- Root Cause
+- Fix
+- PR Description
