@@ -2,59 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background-color: #050505;
+  background-color: #030712;
   background-image:
-    radial-gradient(ellipse at top, #1a0000 0%, #050505 60%),
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(255, 0, 0, 0.015) 2px,
-      rgba(255, 0, 0, 0.015) 4px
-    );
-  color: #e8e8e8;
-  font-family: 'Courier Prime', 'Courier New', monospace;
+    radial-gradient(ellipse at top, #0f1e3d 0%, #030712 65%),
+    radial-gradient(ellipse at bottom right, #1a0a00 0%, transparent 60%);
+  color: #e2e8f0;
+  font-family: 'Share Tech Mono', 'Courier New', monospace;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Flickering title animation */
-@keyframes flicker {
-  0%   { opacity: 1;    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 60px #cc0000; }
-  19%  { opacity: 1;    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 60px #cc0000; }
-  20%  { opacity: 0.6;  text-shadow: none; }
-  21%  { opacity: 1;    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 60px #cc0000; }
-  50%  { opacity: 0.85; text-shadow: 0 0 5px #ff0000, 0 0 10px #cc0000; }
-  75%  { opacity: 0.95; text-shadow: 0 0 15px #ff0000, 0 0 30px #cc0000; }
-  80%  { opacity: 0.5;  text-shadow: none; }
-  81%  { opacity: 1;    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 60px #cc0000; }
-  100% { opacity: 1;    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 60px #cc0000; }
+/* Arc reactor pulse — golden ring */
+@keyframes arc-reactor {
+  0%, 100% {
+    box-shadow:
+      0 0 6px #f59e0b,
+      0 0 12px #f59e0b,
+      0 0 24px #b45309,
+      inset 0 0 8px rgba(245, 158, 11, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 12px #fbbf24,
+      0 0 28px #f59e0b,
+      0 0 50px #b45309,
+      inset 0 0 16px rgba(251, 191, 36, 0.2);
+  }
 }
 
-.flicker { animation: flicker 4s infinite; }
+.arc-glow { animation: arc-reactor 2s infinite; }
 
-/* Red glow border pulse */
-@keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 5px #8b0000, 0 0 10px #8b0000, inset 0 0 5px rgba(139,0,0,0.1); }
-  50%       { box-shadow: 0 0 20px #cc0000, 0 0 40px #8b0000, inset 0 0 10px rgba(204,0,0,0.15); }
+/* Blue arc reactor (display) */
+@keyframes arc-blue {
+  0%, 100% {
+    box-shadow:
+      0 0 6px #3b82f6,
+      0 0 14px #1d4ed8,
+      inset 0 0 8px rgba(59, 130, 246, 0.08);
+  }
+  50% {
+    box-shadow:
+      0 0 14px #60a5fa,
+      0 0 30px #3b82f6,
+      inset 0 0 14px rgba(96, 165, 250, 0.15);
+  }
 }
 
-.glow-border { animation: glow-pulse 2.5s infinite; }
+.arc-blue { animation: arc-blue 2.5s infinite; }
 
-/* Dim particle background flicker on calculator card */
-@keyframes bg-breathe {
-  0%, 100% { background-color: #0a0a0a; }
-  50%       { background-color: #0d0505; }
+/* Title gold shimmer */
+@keyframes gold-shimmer {
+  0%, 100% {
+    text-shadow: 0 0 8px #f59e0b, 0 0 20px #b45309;
+    letter-spacing: 0.35em;
+  }
+  50% {
+    text-shadow: 0 0 16px #fbbf24, 0 0 40px #f59e0b, 0 0 60px #b45309;
+    letter-spacing: 0.4em;
+  }
 }
 
-.calc-card { animation: bg-breathe 5s infinite; }
+.avengers-title { animation: gold-shimmer 3s infinite; }
 
 /* Scanline overlay */
 .scanlines::after {
@@ -65,9 +80,17 @@ body {
     to bottom,
     transparent 0px,
     transparent 3px,
-    rgba(0, 0, 0, 0.08) 3px,
-    rgba(0, 0, 0, 0.08) 4px
+    rgba(0, 0, 0, 0.06) 3px,
+    rgba(0, 0, 0, 0.06) 4px
   );
   pointer-events: none;
   z-index: 9999;
 }
+
+/* Card breathe */
+@keyframes card-breathe {
+  0%, 100% { background-color: #0a0f1e; }
+  50%       { background-color: #0d1424; }
+}
+
+.calc-card { animation: card-breathe 5s infinite; }
