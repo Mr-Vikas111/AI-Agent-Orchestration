@@ -7,7 +7,16 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background-color: #0a0a0a;
+  background-color: #050505;
+  background-image:
+    radial-gradient(ellipse at top, #1a0000 0%, #050505 60%),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(255, 0, 0, 0.015) 2px,
+      rgba(255, 0, 0, 0.015) 4px
+    );
   color: #e8e8e8;
   font-family: 'Courier Prime', 'Courier New', monospace;
   min-height: 100vh;
@@ -16,17 +25,49 @@ body {
   justify-content: center;
 }
 
+/* Flickering title animation */
 @keyframes flicker {
-  0%, 100% { opacity: 1; text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 40px #cc0000; }
-  50% { opacity: 0.85; text-shadow: 0 0 5px #ff0000, 0 0 10px #cc0000; }
-  75% { opacity: 0.95; text-shadow: 0 0 15px #ff0000, 0 0 30px #cc0000; }
+  0%   { opacity: 1;    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 60px #cc0000; }
+  19%  { opacity: 1;    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 60px #cc0000; }
+  20%  { opacity: 0.6;  text-shadow: none; }
+  21%  { opacity: 1;    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 60px #cc0000; }
+  50%  { opacity: 0.85; text-shadow: 0 0 5px #ff0000, 0 0 10px #cc0000; }
+  75%  { opacity: 0.95; text-shadow: 0 0 15px #ff0000, 0 0 30px #cc0000; }
+  80%  { opacity: 0.5;  text-shadow: none; }
+  81%  { opacity: 1;    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 60px #cc0000; }
+  100% { opacity: 1;    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 60px #cc0000; }
 }
 
-.flicker { animation: flicker 3s infinite; }
+.flicker { animation: flicker 4s infinite; }
 
+/* Red glow border pulse */
 @keyframes glow-pulse {
-  0%, 100% { box-shadow: 0 0 5px #8b0000, 0 0 10px #8b0000; }
-  50% { box-shadow: 0 0 15px #cc0000, 0 0 30px #8b0000; }
+  0%, 100% { box-shadow: 0 0 5px #8b0000, 0 0 10px #8b0000, inset 0 0 5px rgba(139,0,0,0.1); }
+  50%       { box-shadow: 0 0 20px #cc0000, 0 0 40px #8b0000, inset 0 0 10px rgba(204,0,0,0.15); }
 }
 
-.glow-border { animation: glow-pulse 2s infinite; }
+.glow-border { animation: glow-pulse 2.5s infinite; }
+
+/* Dim particle background flicker on calculator card */
+@keyframes bg-breathe {
+  0%, 100% { background-color: #0a0a0a; }
+  50%       { background-color: #0d0505; }
+}
+
+.calc-card { animation: bg-breathe 5s infinite; }
+
+/* Scanline overlay */
+.scanlines::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0, 0, 0, 0.08) 3px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}

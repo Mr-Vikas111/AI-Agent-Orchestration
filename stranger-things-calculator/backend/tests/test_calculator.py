@@ -36,8 +36,61 @@ def test_service_modulo_by_zero():
         CalculatorService.calculate("modulo", 5, 0)
 
 def test_service_unknown_operation():
-    with pytest.raises(ValueError, match="Unknown operation: sqrt"):
-        CalculatorService.calculate("sqrt", 5, 0)
+    with pytest.raises(ValueError, match="Unknown operation: gibberish"):
+        CalculatorService.calculate("gibberish", 5, 0)
+
+
+# --- Scientific operation tests ---
+
+def test_service_sin():
+    assert abs(CalculatorService.calculate("sin", 90) - 1.0) < 1e-9
+
+def test_service_cos():
+    assert abs(CalculatorService.calculate("cos", 0) - 1.0) < 1e-9
+
+def test_service_tan():
+    assert abs(CalculatorService.calculate("tan", 45) - 1.0) < 1e-9
+
+def test_service_sqrt():
+    assert CalculatorService.calculate("sqrt", 16) == 4.0
+
+def test_service_sqrt_negative():
+    with pytest.raises(ValueError, match="Cannot take square root"):
+        CalculatorService.calculate("sqrt", -1)
+
+def test_service_log():
+    import math
+    assert abs(CalculatorService.calculate("log", math.e) - 1.0) < 1e-9
+
+def test_service_log10():
+    assert abs(CalculatorService.calculate("log10", 100) - 2.0) < 1e-9
+
+def test_service_log_non_positive():
+    with pytest.raises(ValueError, match="Logarithm undefined"):
+        CalculatorService.calculate("log", 0)
+
+
+# --- API tests for scientific ops ---
+
+def test_api_sin():
+    response = client.post("/api/calculate", json={"operation": "sin", "a": 90, "b": 0})
+    assert response.status_code == 200
+    assert abs(response.json()["result"] - 1.0) < 1e-9
+
+def test_api_sqrt():
+    response = client.post("/api/calculate", json={"operation": "sqrt", "a": 25, "b": 0})
+    assert response.status_code == 200
+    assert response.json()["result"] == 5.0
+
+def test_api_sqrt_negative():
+    response = client.post("/api/calculate", json={"operation": "sqrt", "a": -4, "b": 0})
+    assert response.status_code == 422
+    assert "square root" in response.json()["detail"]
+
+def test_api_log10():
+    response = client.post("/api/calculate", json={"operation": "log10", "a": 1000, "b": 0})
+    assert response.status_code == 200
+    assert abs(response.json()["result"] - 3.0) < 1e-9
 
 
 # --- API endpoint tests ---
