@@ -11,9 +11,13 @@ jobs:
 
       - name: Setup Python
         uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
 
       - name: Install deps
         run: pip install -r requirements.txt
+        working-directory: stranger-things-calculator/backend
 
       - name: Run tests
-        run: pytest
+        run: pytest tests/ -v
+        working-directory: stranger-things-calculator/backend
