@@ -11,6 +11,9 @@ You coordinate all agents.
   - frontend
   - tester
   - reviewer
+  - devops
+  - security
+  - github-issues
 
 ## Output Format
 1. Task breakdown

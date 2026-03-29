@@ -90,14 +90,14 @@ export default function Calculator() {
   const displayResult = result || (waitingForB ? b : a);
 
   return (
-    <div className="calc-card w-80 bg-zinc-950 border border-red-900 rounded-lg p-4 shadow-2xl glow-border">
+    <div className="calc-card w-80 bg-slate-950 border border-blue-900 rounded-lg p-4 shadow-2xl arc-glow">
       <Display expression={expression} result={displayResult} error={error} />
 
       {/* Mode toggle */}
       <div className="flex justify-end mb-2">
         <button
           onClick={() => setSciMode(s => !s)}
-          className="text-xs uppercase tracking-widest text-red-700 hover:text-red-400 transition-colors border border-red-900 rounded px-2 py-1"
+          className="text-xs uppercase tracking-widest text-amber-700 hover:text-amber-400 transition-colors border border-amber-900 rounded px-2 py-1"
         >
           {sciMode ? '[ sci on ]' : '[ sci off ]'}
         </button>

@@ -17,12 +17,12 @@ describe('Button', () => {
   it('applies number variant styles by default', () => {
     render(<Button label="5" onClick={() => {}} />);
     const btn = screen.getByText('5');
-    expect(btn.className).toContain('bg-zinc-900');
+    expect(btn.className).toContain('bg-slate-900');
   });
 
   it('applies equals variant styles', () => {
     render(<Button label="=" onClick={() => {}} variant="equals" />);
     const btn = screen.getByText('=');
-    expect(btn.className).toContain('bg-red-800');
+    expect(btn.className).toContain('bg-amber-700');
   });
 });
