@@ -7,10 +7,10 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background-color: #030712;
+  background-color: #0a0a0a;
   background-image:
-    radial-gradient(ellipse at top, #0f1e3d 0%, #030712 65%),
-    radial-gradient(ellipse at bottom right, #1a0a00 0%, transparent 60%);
+    radial-gradient(ellipse at top, #1a1a2e 0%, #0a0a0a 60%),
+    radial-gradient(ellipse at bottom left, #12001a 0%, transparent 55%);
   color: #e2e8f0;
   font-family: 'Share Tech Mono', 'Courier New', monospace;
   min-height: 100vh;
@@ -19,53 +19,53 @@ body {
   justify-content: center;
 }
 
-/* Arc reactor pulse — golden ring */
+/* Batman bat-signal pulse — yellow ring */
 @keyframes arc-reactor {
   0%, 100% {
     box-shadow:
-      0 0 6px #f59e0b,
-      0 0 12px #f59e0b,
-      0 0 24px #b45309,
-      inset 0 0 8px rgba(245, 158, 11, 0.1);
+      0 0 6px #f5c518,
+      0 0 12px #c49a10,
+      0 0 24px #7a5f00,
+      inset 0 0 8px rgba(245, 197, 24, 0.1);
   }
   50% {
     box-shadow:
-      0 0 12px #fbbf24,
-      0 0 28px #f59e0b,
-      0 0 50px #b45309,
-      inset 0 0 16px rgba(251, 191, 36, 0.2);
+      0 0 14px #ffe033,
+      0 0 30px #f5c518,
+      0 0 55px #a07800,
+      inset 0 0 16px rgba(245, 197, 24, 0.25);
   }
 }
 
 .arc-glow { animation: arc-reactor 2s infinite; }
 
-/* Blue arc reactor (display) */
+/* Display glow — dark purple/gray */
 @keyframes arc-blue {
   0%, 100% {
     box-shadow:
-      0 0 6px #3b82f6,
-      0 0 14px #1d4ed8,
-      inset 0 0 8px rgba(59, 130, 246, 0.08);
+      0 0 6px #4a3060,
+      0 0 14px #2d1b40,
+      inset 0 0 8px rgba(74, 48, 96, 0.08);
   }
   50% {
     box-shadow:
-      0 0 14px #60a5fa,
-      0 0 30px #3b82f6,
-      inset 0 0 14px rgba(96, 165, 250, 0.15);
+      0 0 14px #6b46c1,
+      0 0 30px #4a3060,
+      inset 0 0 14px rgba(107, 70, 193, 0.15);
   }
 }
 
 .arc-blue { animation: arc-blue 2.5s infinite; }
 
-/* Title gold shimmer */
+/* Batman title shimmer — yellow */
 @keyframes gold-shimmer {
   0%, 100% {
-    text-shadow: 0 0 8px #f59e0b, 0 0 20px #b45309;
+    text-shadow: 0 0 8px #f5c518, 0 0 20px #a07800;
     letter-spacing: 0.35em;
   }
   50% {
-    text-shadow: 0 0 16px #fbbf24, 0 0 40px #f59e0b, 0 0 60px #b45309;
-    letter-spacing: 0.4em;
+    text-shadow: 0 0 18px #ffe033, 0 0 40px #f5c518, 0 0 70px #7a5f00;
+    letter-spacing: 0.42em;
   }
 }
 
@@ -80,8 +80,8 @@ body {
     to bottom,
     transparent 0px,
     transparent 3px,
-    rgba(0, 0, 0, 0.06) 3px,
-    rgba(0, 0, 0, 0.06) 4px
+    rgba(0, 0, 0, 0.08) 3px,
+    rgba(0, 0, 0, 0.08) 4px
   );
   pointer-events: none;
   z-index: 9999;
@@ -89,8 +89,8 @@ body {
 
 /* Card breathe */
 @keyframes card-breathe {
-  0%, 100% { background-color: #0a0f1e; }
-  50%       { background-color: #0d1424; }
+  0%, 100% { background-color: #111111; }
+  50%       { background-color: #161616; }
 }
 
 .calc-card { animation: card-breathe 5s infinite; }

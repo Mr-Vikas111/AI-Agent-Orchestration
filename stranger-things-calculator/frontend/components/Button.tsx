@@ -6,10 +6,10 @@ interface ButtonProps {
 }
 
 const variantStyles: Record<string, string> = {
-  number:   'bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700',
-  operator: 'bg-blue-950 hover:bg-blue-900 text-blue-300 border border-blue-800',
-  action:   'bg-slate-800 hover:bg-slate-700 text-slate-400 border border-slate-600',
-  equals:   'bg-amber-700 hover:bg-amber-600 text-white border border-amber-500 arc-glow',
+  number:   'bg-zinc-900 hover:bg-zinc-800 text-zinc-200 border border-zinc-700',
+  operator: 'bg-zinc-950 hover:bg-zinc-800 text-yellow-400 border border-zinc-700',
+  action:   'bg-zinc-800 hover:bg-zinc-700 text-zinc-400 border border-zinc-600',
+  equals:   'bg-yellow-500 hover:bg-yellow-400 text-black border border-yellow-300 arc-glow',
 };
 
 export default function Button({ label, onClick, variant = 'number', className = '' }: ButtonProps) {
